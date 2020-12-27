@@ -6,7 +6,8 @@ const Hero = ({
   speed = 200,
   spriteSheetUrl = 'https://res.cloudinary.com/fergusdev/image/upload/v1609029014/hero/redskull_r3wvcc.png',
   width = 128,
-  height = 128
+  height = 128,
+  defaultPosition = {x: -100, y: 680}
 }) => {
 
   useEffect(() => {
@@ -48,7 +49,8 @@ const Hero = ({
   return (
     <Draggable
         handle=".handle"
-        defaultPosition={{x: 0, y: 0}}
+        axis="x"
+        defaultPosition={ defaultPosition }
         position={null}
         grid={[1, 1]}
         scale={1}
