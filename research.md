@@ -39,3 +39,9 @@ https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sle
 https://stackoverflow.com/questions/19484707/how-can-i-make-an-svg-scale-with-its-parent-container
 
 https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+
+https://create-react-app.dev/docs/using-the-public-folder/
+https://stackoverflow.com/questions/8376359/how-to-create-a-transparent-gif-or-png-with-pil-python-imaging
+https://www.deviantart.com/evilyoda666/art/Yoda-Sprites-330336214
+
+https://craftpix.net/
