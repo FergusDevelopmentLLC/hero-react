@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
 import Draggable from 'react-draggable'
 
 const Hero = ({
-  speed = 200,
-  spriteSheetUrl = 'https://res.cloudinary.com/fergusdev/image/upload/v1609029014/hero/redskull_r3wvcc.png',
-  width = 128,
-  height = 128,
-  defaultPosition = {x: -100, y: 680}
+  type = "colossus",
 }) => {
+
+  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  const width = 128
+  const height = 128
+  const defaultPosition = { x: -100, y: 680 }
+  let speed = 50
+
+  if(type !== "colossus") {
+    speed = 50
+  }
 
   useEffect(() => {
 
@@ -32,7 +37,7 @@ const Hero = ({
       console.log('unmount')
     }
 
-  }, [speed, spriteSheetUrl])
+  }, [type, speed])
 
   const handleStart = () => {
     console.log('handleStart')
