@@ -3,16 +3,17 @@ import Draggable from 'react-draggable'
 
 const Pirate = ({
   action = "idle",
-  type = "pirate"
+  type = "captain",
+  direction = "east"
 }) => {
 
   const container = useRef(null)
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/pirate-${type}.png`
   let width = 387
   let height = 323
   const numOfCells = 7
   const defaultPosition = { x: 500, y: 720 }
-  const speed = 90
+  const speed = 80
 
   if(type === 'pirate2') {
     width = 355
@@ -80,6 +81,15 @@ const Pirate = ({
     // console.log('handleStop')
   }
 
+  const getOrientation = () => {
+    if(direction === "west") {
+      return "scale(-1,1) translate(-355,0)"
+    }
+    else {
+      return null
+    }
+  }
+
   return (
     <Draggable
         handle=".handle"
@@ -99,7 +109,7 @@ const Pirate = ({
                 <rect x="0" y="0" width={ width } height={ height } />
               </clipPath>
             </defs>
-            <g>
+            <g transform={ getOrientation() }>
               <image ref={ container } width={ width * numOfCells } height={ height * 7 } href={ spriteSheetUrl } clipPath="url(#clip)" />
             </g>
           </svg>
