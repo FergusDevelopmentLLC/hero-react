@@ -2,45 +2,76 @@ import React, { useEffect, useRef } from 'react'
 import Draggable from 'react-draggable'
 
 const Pirate = ({
-  type = "pirate",
+  action = "idle"
 }) => {
 
   const container = useRef(null)
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
-  const width = 1550
-  const height = 1293
+  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/pirate.png`
+  const width = 387
+  const height = 323
   const numOfCells = 7
   const defaultPosition = { x: 500, y: 720 }
-  const speed = 125
+  const speed = 90
 
   useEffect(() => {
-    const init = async () => {
-      let i = 0
-      while (true) {
-        container.current.setAttribute('x', (--i) * width)
-        await new Promise(r => setTimeout(r, speed))
-        if (i < ((numOfCells * -1) + 2)) i = 0
+
+    const moveSpriteSheetForCurrentAction = () => {
+      
+      let yPosition = 0
+
+      switch(action) {
+        case "walk":
+          yPosition = (1 * height) * -1
+          break;
+        case "run":
+          yPosition = (2 * height) * -1
+          break;
+        case "jump":
+          yPosition = (3 * height) * -1
+          break;
+        case "attack":
+          yPosition = (4 * height) * -1
+          break;
+        case "hurt":
+          yPosition = (5 * height) * -1
+          break;
+        case "die":
+          yPosition = (6 * height) * -1
+          break;
+        default:
+          yPosition = 0
       }
+
+      container.current.setAttribute('y', yPosition)
+
     }
 
-    init()
+    console.log('action', action)
     
+    moveSpriteSheetForCurrentAction()
+
+    let cellIndex = 0
+    let interval = setInterval(() => {
+      container.current.setAttribute('x', (--cellIndex) * width)
+      if (cellIndex < ((numOfCells * -1) + 2)) cellIndex = 0
+    }, speed)
+
     return () => {
-      console.log('unmount')
+      clearInterval(interval)
     }
 
-  }, [type])
+  }, [action])
 
   const handleStart = () => {
-    console.log('handleStart')
+    // console.log('handleStart')
   }
 
   const handleDrag = () => {
-    console.log('handleDrag')
+    // console.log('handleDrag')
   }
 
   const handleStop = () => {
-    console.log('handleStop')
+    // console.log('handleStop')
   }
 
   return (
@@ -51,9 +82,9 @@ const Pirate = ({
         position={null}
         grid={[1, 1]}
         scale={1}
-        onStart={ handleStart() }
-        onDrag={ handleDrag() }
-        onStop={ handleStop() }>
+        onStart={ handleStart }
+        onDrag={ handleDrag }
+        onStop={ handleStop }>
 
         <div className="pirate handle" >
           <svg width="100%" viewBox={ `0 0 ${ width } ${ height } ` }>
@@ -63,7 +94,7 @@ const Pirate = ({
               </clipPath>
             </defs>
             <g>
-              <image ref={ container } width={ width * numOfCells } height={ height } href={ spriteSheetUrl } clipPath="url(#clip)" />
+              <image ref={ container } width={ width * numOfCells } height={ height * 7 } href={ spriteSheetUrl } clipPath="url(#clip)" />
             </g>
           </svg>
         </div>
