@@ -1,33 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Draggable from 'react-draggable'
 
 const Hero = ({
   type = "colossus",
 }) => {
 
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  const container = useRef(null)
+
   const width = 128
   const height = 128
-  const defaultPosition = { x: -100, y: 680 }
-  let speed = 50
-
-  if(type !== "colossus") {
-    speed = 50
-  }
+  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  const numOfCells = 6
+  const defaultPosition = { x: 0, y: 830 }
+  const speed = 125
 
   useEffect(() => {
 
-    async function init() {
+    const init = async () => {
       let i = 0
       while (true) {
-        
-        let element = document.getElementById("hero")
-        element.setAttribute('x',(--i)*width)
+        container.current.setAttribute('x',(--i)*width)
         await new Promise(r => setTimeout(r, speed))
-        
-        if (i<-4) {
-          i=0
-        }
+        if (i < ((numOfCells * -1) + 2)) i=0
       }
     }
 
@@ -37,7 +31,7 @@ const Hero = ({
       console.log('unmount')
     }
 
-  }, [type, speed])
+  }, [type])
 
   const handleStart = () => {
     console.log('handleStart')
@@ -63,7 +57,7 @@ const Hero = ({
         onDrag={ handleDrag() }
         onStop={ handleStop() }>
 
-        <div className="character handle">
+        <div className="character handle" >
           <svg width="100%" viewBox={ `0 0 ${ width } ${ height } ` }>
             <defs>
               <clipPath id="clip">
@@ -71,7 +65,7 @@ const Hero = ({
               </clipPath>
             </defs>
             <g>
-              <image id="hero" width="768" height="128" href={ spriteSheetUrl } clipPath="url(#clip)" />
+              <image ref={ container } width={ width * numOfCells } height={ height } href={ spriteSheetUrl } clipPath="url(#clip)" />
             </g>
           </svg>
         </div>
