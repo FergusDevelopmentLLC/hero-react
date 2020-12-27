@@ -45,3 +45,7 @@ https://stackoverflow.com/questions/8376359/how-to-create-a-transparent-gif-or-p
 https://www.deviantart.com/evilyoda666/art/Yoda-Sprites-330336214
 
 https://craftpix.net/
+
+react chess games
+https://codepen.io/vim123/pen/WBZNez
+https://github.com/TalhaAwan/react-chess
