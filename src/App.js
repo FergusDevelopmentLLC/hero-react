@@ -1,10 +1,12 @@
 import './App.css'
+import Pirate from './components/Pirate'
 import Hero from './components/Hero'
 
 const App = () => {
   return (
     <div className="App">
-      <Hero type="pirate" /> 
+     <Pirate type="pirate-idle" /><Hero />
+      
     </div>
   )
 }
