@@ -1,10 +1,6 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://res.cloudinary.com/fergusdev/image/upload/v1609030536/hero/backgrounds/Forest_1920x1080_pvehnd.jpg");
+  background-color: #cccccc;
 }
 
 code {
