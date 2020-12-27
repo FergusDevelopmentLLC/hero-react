@@ -2,16 +2,22 @@ import React, { useEffect, useRef } from 'react'
 import Draggable from 'react-draggable'
 
 const Pirate = ({
-  action = "idle"
+  action = "idle",
+  type = "pirate"
 }) => {
 
   const container = useRef(null)
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/pirate.png`
-  const width = 387
-  const height = 323
+  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  let width = 387
+  let height = 323
   const numOfCells = 7
   const defaultPosition = { x: 500, y: 720 }
   const speed = 90
+
+  if(type === 'pirate2') {
+    width = 355
+    height = 300
+  }
 
   useEffect(() => {
 
@@ -60,7 +66,7 @@ const Pirate = ({
       clearInterval(interval)
     }
 
-  }, [action])
+  }, [action, height, width])
 
   const handleStart = () => {
     // console.log('handleStart')

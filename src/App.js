@@ -26,7 +26,7 @@ const App = () => {
   return (
 
     <div className="App">
-      <Pirate action={ action } /><Hero />
+      <Pirate action={ action } type="pirate2" /><Hero />
     </div>
 
   )
