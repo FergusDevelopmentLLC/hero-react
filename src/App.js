@@ -26,7 +26,11 @@ const App = () => {
   return (
 
     <div className="App">
-      <Pirate action={ action } type="pirate2" /><Hero />
+      <Pirate action={ action } direction="west" />
+      <Pirate action={ action } direction="east" />
+      <Pirate action={ action } type="gunner" direction="east" />
+      <Pirate action={ action } type="gunner" direction="west" />
+      <Hero />
     </div>
 
   )
