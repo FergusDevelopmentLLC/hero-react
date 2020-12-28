@@ -49,3 +49,4 @@ https://craftpix.net/
 react chess games
 https://codepen.io/vim123/pen/WBZNez
 https://github.com/TalhaAwan/react-chess
+http://jsfiddle.net/4hfrvp53/7/
