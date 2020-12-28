@@ -4,18 +4,18 @@ import Draggable from 'react-draggable'
 const Pirate = ({
   action = "idle",
   type = "captain",
-  direction = "east"
+  direction = "east",
+  spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/pirate-${type}.png`,
+  numOfCells = 7,
+  defaultPosition = { x: 500, y: 720 },
+  speed = 80
 }) => {
 
   const container = useRef(null)
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/pirate-${type}.png`
   let width = 387
   let height = 323
-  const numOfCells = 7
-  const defaultPosition = { x: 500, y: 720 }
-  const speed = 80
 
-  if(type === 'pirate2') {
+  if(type === 'gunner') {
     width = 355
     height = 300
   }
