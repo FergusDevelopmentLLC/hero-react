@@ -7,14 +7,20 @@ const App = () => {
 
   const actions = ["idle", "walk", "run", "jump", "attack", "hurt", "die"]
 
-  const [action, setAction] = useState(actions[1])
+  const [action01, setActionAction01] = useState(actions[1])
+  const [action02, setActionAction02] = useState(actions[1])
 
   useEffect(() => {
 
     setInterval(() => {
       console.log('update state')
+
       let randomAction = actions[actions.length * Math.random() | 0]
-      setAction(randomAction)
+      setActionAction01(randomAction)
+
+      randomAction = actions[actions.length * Math.random() | 0]
+      setActionAction02(randomAction)
+
     }, 5000)
 
     return () => {
@@ -26,10 +32,8 @@ const App = () => {
   return (
 
     <div className="App">
-      <Pirate action={ action } direction="west" />
-      <Pirate action={ action } direction="east" />
-      <Pirate action={ action } type="gunner" direction="east" />
-      <Pirate action={ action } type="gunner" direction="west" />
+      <Pirate action={ action01 } type="captain" direction="east" speed={ 50 } defaultPosition={{ x: 350, y: 720 }} />
+      <Pirate action={ action02 } type="gunner" direction="west" />
       <Hero />
     </div>
 
