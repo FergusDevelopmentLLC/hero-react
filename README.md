@@ -52,3 +52,10 @@ react chess games
 https://codepen.io/vim123/pen/WBZNez
 https://github.com/TalhaAwan/react-chess
 http://jsfiddle.net/4hfrvp53/7/
+
+https://medium.com/dailyjs/how-to-build-a-simple-sprite-animation-in-javascript-b764644244aa
+https://jsfiddle.net/prashantram/cbf6syjb/5/
+
+https://superheroapi.com/index.html
+https://medium.com/@prashantramnyc/javascript-closures-simplified-d0d23fa06ba4
+https://www.programiz.com/python-programming/closure
