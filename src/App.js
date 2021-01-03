@@ -2,6 +2,7 @@ import './App.css'
 import { useEffect, useState } from 'react'
 import Pirate from './components/Pirate'
 import Hero from './components/Hero'
+import Character from './components/Character'
 
 const App = () => {
 
@@ -12,29 +13,29 @@ const App = () => {
 
   useEffect(() => {
 
-    setInterval(() => {
-      console.log('update state')
+    // setInterval(() => {
+    //   console.log('update state')
 
-      let randomAction = actions[actions.length * Math.random() | 0]
-      setActionAction01(randomAction)
+    //   let randomAction = actions[actions.length * Math.random() | 0]
+    //   setActionAction01(randomAction)
 
-      randomAction = actions[actions.length * Math.random() | 0]
-      setActionAction02(randomAction)
+    //   randomAction = actions[actions.length * Math.random() | 0]
+    //   setActionAction02(randomAction)
 
-    }, 5000)
+    // }, 5000)
 
-    return () => {
-      console.log('unmount')
-    }
+    // return () => {
+    //   console.log('unmount')
+    // }
 
   }, [])
 
   return (
 
     <div className="App">
-      <Pirate action={ action01 } type="captain" direction="east" speed={ 50 } defaultPosition={{ x: 350, y: 720 }} />
-      <Pirate action={ action02 } type="gunner" direction="west" />
-      <Hero />
+      {/* <Pirate action={ action01 } type="captain" direction="east" speed={ 50 } defaultPosition={{ x: 350, y: 720 }} />
+      <Hero /> */}
+      <Character />
     </div>
 
   )
