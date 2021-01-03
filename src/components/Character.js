@@ -3,7 +3,7 @@ import Draggable from 'react-draggable'
 
 const Character = ({
   type="minotaur-brown",
-  action = "idle",
+  action = "die",
   direction = "east",
   defaultPosition = { x: 100, y: 755 },
   speed = 100,
@@ -37,16 +37,19 @@ const Character = ({
           yPosition = (2 * height) * -1
           break
         case "jump":
-            numOfCells = 16
+            numOfCells = 6
           yPosition = (3 * height) * -1
           break
         case "attack":
+          numOfCells = 12
           yPosition = (4 * height) * -1
           break
         case "hurt":
+          numOfCells = 12
           yPosition = (5 * height) * -1
           break
         case "die":
+          numOfCells = 15
           yPosition = (6 * height) * -1
           break
         default:
