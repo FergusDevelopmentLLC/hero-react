@@ -23,9 +23,8 @@ div.pirate {
 }
 
 div.character {
-  width: 360px;
-  height: 245px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   z-index: 11;
-  border: 1px solid red;
 }
