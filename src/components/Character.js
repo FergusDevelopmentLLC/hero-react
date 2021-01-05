@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from 'react'
 import Draggable from 'react-draggable'
 
 const Character = ({
+  type = "pirate-captain",
   currentAction = "idle",
-  direction = "east",
+  direction = "west",
   defaultPosition = { x: 100, y: 500 }
 }) => {
 
   const container = useRef(null)
 
   const minotaurBrown = {
-    type: "minotaur-brown",
     actions: [{
                 name: "idle",
                 numberOfCells: 12,
@@ -71,16 +71,123 @@ const Character = ({
     spriteSheetHeight: 6480
   }
 
-  const { type, actions, width, height, spriteSheetWidth, spriteSheetHeight } = minotaurBrown
+  const pirateCaptain = {
+    actions: [{
+                name: "idle",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "walk",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "run",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "jump",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "attack",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "hurt",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "die",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              }],
+    width: 387,
+    height: 323,
+    spriteSheetWidth: 2709,
+    spriteSheetHeight: 2261
+  }
+
+  const pirateGunner = {
+    actions: [{
+                name: "idle",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "walk",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "run",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: true
+              },
+              {
+                name: "jump",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "attack",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "hurt",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              },
+              {
+                name: "die",
+                numberOfCells: 7,
+                speed: 80,
+                repeat: false
+              }],
+    width: 355,
+    height: 300,
+    spriteSheetWidth: 2480,
+    spriteSheetHeight: 2100
+  }
+
+  let character = pirateCaptain
+  if(type === 'minotaur-brown') character = minotaurBrown
+  if(type === 'pirate-captain') character = pirateCaptain
+  if(type === 'pirate-cunner') character = pirateGunner
+
+  const { actions, width, height, spriteSheetWidth, spriteSheetHeight } = character
   const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
-  
-  let currentActionIndex = actions.findIndex(action => action.name === currentAction)
-  let currentActionMatch = actions.find(action => action.name === currentAction)
-  let speed = currentActionMatch.speed
-  let numberOfCells = currentActionMatch.numberOfCells
-  let repeat = currentActionMatch.repeat
 
   useEffect(() => {
+    
+    console.log('currentAction', currentAction)
+
+    let currentActionIndex = actions.findIndex(action => action.name === currentAction)
+    if(currentActionIndex === -1) currentActionIndex = 0
+    
+    const currentActionMatch = actions[currentActionIndex]
+    const speed = currentActionMatch.speed
+    const numberOfCells = currentActionMatch.numberOfCells
+    const repeat = currentActionMatch.repeat
 
     container.current.setAttribute('y', ((currentActionIndex * height) * -1))
 
@@ -89,15 +196,15 @@ const Character = ({
       container.current.setAttribute('x', (--cellIndex) * width)
       if (cellIndex < ((numberOfCells * -1) + 2)) {
         cellIndex = 0
-        if(!repeat) {
-          currentAction = actions[0].name
-          currentActionIndex = actions.findIndex(action => action.name === currentAction)
-          container.current.setAttribute('y', ((currentActionIndex * height) * -1))
-          currentActionMatch = actions.find(action => action.name === currentAction)
-          speed = currentActionMatch.speed
-          numberOfCells = currentActionMatch.numberOfCells
-          repeat = currentActionMatch.repeat
-        }
+        // if(!repeat) {
+        //   action = actions[0].name
+        //   currentActionIndex = actions.findIndex(action => action.name === currentAction)
+        //   container.current.setAttribute('y', ((currentActionIndex * height) * -1))
+        //   currentActionMatch = actions.find(action => action.name === currentAction)
+        //   speed = currentActionMatch.speed
+        //   numberOfCells = currentActionMatch.numberOfCells
+        //   repeat = currentActionMatch.repeat
+        // }
       }
     }, speed)
 
@@ -105,7 +212,7 @@ const Character = ({
       clearInterval(interval)
     }
 
-  }, [currentAction, height, width])
+  }, [actions, currentAction, type])
 
   const handleStart = () => {
     // console.log('handleStart')
@@ -120,7 +227,7 @@ const Character = ({
   }
 
   const getOrientation = () => {
-    if(direction === "west") {
+    if(direction === "east") {
       return `scale(-1,1) translate(${((width) * -1)},0)`
     }
     else {
