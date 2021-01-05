@@ -163,16 +163,16 @@ const Character = ({
                 speed: 80,
                 repeat: false
               }],
-    width: 355,
-    height: 300,
-    spriteSheetWidth: 2480,
-    spriteSheetHeight: 2100
+    width: 356,
+    height: 356,
+    spriteSheetWidth: 2492,
+    spriteSheetHeight: 2492
   }
 
   let character = pirateCaptain
   if(type === 'minotaur-brown') character = minotaurBrown
   if(type === 'pirate-captain') character = pirateCaptain
-  if(type === 'pirate-cunner') character = pirateGunner
+  if(type === 'pirate-gunner') character = pirateGunner
 
   const { actions, width, height, spriteSheetWidth, spriteSheetHeight } = character
   const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
