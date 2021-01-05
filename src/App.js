@@ -1,11 +1,10 @@
 import './App.css'
 import { useEffect, useState } from 'react'
-import Hero from './components/Hero'
 import Character from './components/Character'
 
 const App = () => {
 
-  //const actions = ["idle", "idle_blank", "walk", "run", "jump", "attack", "hurt", "die", "taunt"]
+  const actions = ["idle", "idle_blank", "walk", "run", "jump", "attack", "hurt", "die", "taunt"]
   //const actions = ["idle", "walk", "run", "jump", "attack", "hurt", "die"]
 
   const [action01, setActionAction01] = useState(actions[1])
@@ -33,7 +32,7 @@ const App = () => {
   return (
 
     <div className="App">
-      <Character type="pirate-gunner" currentAction={ action01 } />
+      <Character type="minotaur-brown" currentAction={ action01 } />
     </div>
 
   )
