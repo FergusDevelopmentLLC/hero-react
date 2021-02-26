@@ -5,7 +5,7 @@ const Character = ({
   type = "pirate-captain",
   currentAction = "idle",
   direction = "west",
-  defaultPosition = { x: 100, y: 500 }
+  defaultPosition = { x: 100, y: 800 }
 }) => {
 
   const container = useRef(null)
