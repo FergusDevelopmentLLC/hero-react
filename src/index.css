@@ -1,5 +1,6 @@
 body {
-  background-image: url("https://res.cloudinary.com/fergusdev/image/upload/v1609030536/hero/backgrounds/Forest_1920x1080_pvehnd.jpg");
+  background-image: url("https://res.cloudinary.com/fergusdev/image/upload/v1614362907/hero/hero_bg_avupz2.png");
+  background-repeat: no-repeat;
   background-color: #cccccc;
 }
 
@@ -28,3 +29,4 @@ div.character {
   position: absolute;
   z-index: 11;
 }
+/* background-image: url("https://res.cloudinary.com/fergusdev/image/upload/v1609030536/hero/backgrounds/Forest_1920x1080_pvehnd.jpg"); */

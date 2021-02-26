@@ -33,7 +33,7 @@ const App = () => {
 
     <div className="App">
       <Character type="pirate-captain" currentAction={ action01 } />
-      <Character type="pirate-gunner" currentAction={ action02 } defaultPosition={{ x: 250, y: 785 }} direction="east" />
+      <Character type="pirate-gunner" currentAction={ action02 } defaultPosition={{ x: 250, y: 485 }} direction="east" />
     </div>
 
   )
