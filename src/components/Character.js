@@ -169,14 +169,24 @@ const Character = ({
     spriteSheetHeight: 2492
   }
 
+  let spriteSheetUrl
   let character = pirateCaptain
-  if(type === 'minotaur-brown') character = minotaurBrown
-  if(type === 'pirate-captain') character = pirateCaptain
-  if(type === 'pirate-gunner') character = pirateGunner
+  if(type === 'minotaur-brown'){
+    character = minotaurBrown
+    spriteSheetUrl = 'https://res.cloudinary.com/fergusdev/image/upload/v1614361996/hero/minotaur-brown_piiw03.png'
+  } 
+  if(type === 'pirate-captain') {
+    character = pirateCaptain
+    spriteSheetUrl = 'https://res.cloudinary.com/fergusdev/image/upload/v1614361989/hero/pirate-captain_elhbvr.png'
+  } 
+  if(type === 'pirate-gunner') {
+    character = pirateGunner
+    spriteSheetUrl = 'https://res.cloudinary.com/fergusdev/image/upload/v1614361988/hero/pirate-gunner_v7xgdw.png'
+  }
 
   const { actions, width, height, spriteSheetWidth, spriteSheetHeight } = character
-  const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
-
+  //const spriteSheetUrl = `${ process.env.PUBLIC_URL }/spriteSheets/${type}.png`
+  
   useEffect(() => {
     
     console.log('currentAction', currentAction)
