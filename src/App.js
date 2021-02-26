@@ -18,8 +18,8 @@ const App = () => {
       let randomAction = actions[actions.length * Math.random() | 0]
       setActionAction01(randomAction)
 
-      // randomAction = actions[actions.length * Math.random() | 0]
-      // setActionAction02(randomAction)
+      randomAction = actions[actions.length * Math.random() | 0]
+      setActionAction02(randomAction)
 
     }, 5000)
 
@@ -33,7 +33,7 @@ const App = () => {
 
     <div className="App">
       <Character type="pirate-captain" currentAction={ action01 } />
-      <Character type="pirate-gunner" currentAction={ action01 } defaultPosition={{ x: 250, y: 785 }} direction="east" />
+      <Character type="pirate-gunner" currentAction={ action02 } defaultPosition={{ x: 250, y: 785 }} direction="east" />
     </div>
 
   )
