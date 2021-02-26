@@ -32,7 +32,8 @@ const App = () => {
   return (
 
     <div className="App">
-      <Character type="minotaur-brown" currentAction={ action01 } />
+      <Character type="pirate-captain" currentAction={ action01 } />
+      <Character type="pirate-gunner" currentAction={ action01 } defaultPosition={{ x: 250, y: 785 }} direction="east" />
     </div>
 
   )
